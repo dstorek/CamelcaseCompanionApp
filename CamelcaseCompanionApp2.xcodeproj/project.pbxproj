@@ -14,6 +14,9 @@
 		63426F451A04E14300E51C5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63426F441A04E14300E51C5A /* Images.xcassets */; };
 		63426F481A04E14300E51C5A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63426F461A04E14300E51C5A /* LaunchScreen.xib */; };
 		63426F541A04E14300E51C5A /* CamelcaseCompanionApp2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63426F531A04E14300E51C5A /* CamelcaseCompanionApp2Tests.swift */; };
+		63426F5E1A04E14F00E51C5A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63426F5D1A04E14F00E51C5A /* PassKit.framework */; };
+		63426F671A050EFD00E51C5A /* PassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63426F661A050EFD00E51C5A /* PassCell.swift */; };
+		63EB388E1A0606650046748D /* 220.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63EB388D1A0606650046748D /* 220.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,10 @@
 		63426F4D1A04E14300E51C5A /* CamelcaseCompanionApp2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamelcaseCompanionApp2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63426F521A04E14300E51C5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63426F531A04E14300E51C5A /* CamelcaseCompanionApp2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelcaseCompanionApp2Tests.swift; sourceTree = "<group>"; };
+		63426F5D1A04E14F00E51C5A /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		63426F5F1A04E14F00E51C5A /* CamelcaseCompanionApp2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CamelcaseCompanionApp2.entitlements; sourceTree = "<group>"; };
+		63426F661A050EFD00E51C5A /* PassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCell.swift; sourceTree = "<group>"; };
+		63EB388D1A0606650046748D /* 220.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 220.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63426F5E1A04E14F00E51C5A /* PassKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +69,7 @@
 		63426F2C1A04E14300E51C5A = {
 			isa = PBXGroup;
 			children = (
+				63426F5D1A04E14F00E51C5A /* PassKit.framework */,
 				63426F371A04E14300E51C5A /* CamelcaseCompanionApp2 */,
 				63426F501A04E14300E51C5A /* CamelcaseCompanionApp2Tests */,
 				63426F361A04E14300E51C5A /* Products */,
@@ -79,11 +88,14 @@
 		63426F371A04E14300E51C5A /* CamelcaseCompanionApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				63426F5F1A04E14F00E51C5A /* CamelcaseCompanionApp2.entitlements */,
 				63426F3A1A04E14300E51C5A /* AppDelegate.swift */,
+				63426F661A050EFD00E51C5A /* PassCell.swift */,
 				63426F3F1A04E14300E51C5A /* ViewController.swift */,
 				63426F411A04E14300E51C5A /* Main.storyboard */,
 				63426F441A04E14300E51C5A /* Images.xcassets */,
 				63426F461A04E14300E51C5A /* LaunchScreen.xib */,
+				63EB388D1A0606650046748D /* 220.jpg */,
 				63426F3C1A04E14300E51C5A /* CamelcaseCompanionApp2.xcdatamodeld */,
 				63426F381A04E14300E51C5A /* Supporting Files */,
 			);
@@ -164,6 +176,12 @@
 				TargetAttributes = {
 					63426F341A04E14300E51C5A = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = JAHRC5GQ4D;
+						SystemCapabilities = {
+							com.apple.Passbook = {
+								enabled = 1;
+							};
+						};
 					};
 					63426F4C1A04E14300E51C5A = {
 						CreatedOnToolsVersion = 6.1;
@@ -197,6 +215,7 @@
 			files = (
 				63426F431A04E14300E51C5A /* Main.storyboard in Resources */,
 				63426F481A04E14300E51C5A /* LaunchScreen.xib in Resources */,
+				63EB388E1A0606650046748D /* 220.jpg in Resources */,
 				63426F451A04E14300E51C5A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63426F671A050EFD00E51C5A /* PassCell.swift in Sources */,
 				63426F401A04E14300E51C5A /* ViewController.swift in Sources */,
 				63426F3E1A04E14300E51C5A /* CamelcaseCompanionApp2.xcdatamodeld in Sources */,
 				63426F3B1A04E14300E51C5A /* AppDelegate.swift in Sources */,
@@ -409,6 +429,7 @@
 				63426F591A04E14300E51C5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63426F5A1A04E14300E51C5A /* Build configuration list for PBXNativeTarget "CamelcaseCompanionApp2Tests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +438,7 @@
 				63426F5C1A04E14300E51C5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
