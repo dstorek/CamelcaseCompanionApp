@@ -17,10 +17,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionView: UICollectionView!
     
     var passArray = []
-    var myArray = ["220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg", ]
-    
-    // var myImage : UIImage!
+    var currentPass : PKPass?
     var myImageView : UIImageView!
+    var myArray = ["220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg", ]
     
     @IBAction func shareButtonTapped(sender: AnyObject) {
         
@@ -58,13 +57,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         var passLib = PKPassLibrary()
         self.passArray = passLib.passes()
-        
-        if passArray.count > 0 {
-            var onePass: AnyObject = passArray[0]
-            // println("\(onePass.localizedName)")
-            //println("\(onePass.organizationName)")
-            //myImage = onePass.icon
-        }
     }
     
     // Data source methods
@@ -115,6 +107,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Delegate methods
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // SELECT item
+        
+        /*
+        NSString *searchTerm = self.searches[indexPath.section];
+        FlickrPhoto *photo = self.searchResults[searchTerm][indexPath.row];
+        self.performSegueWithIdentifier("ShowPass", sender:photo);
+        collectionView.deselectItemAtIndexPath(indexPath animated:YES)
+        */
+        
+        currentPass = passArray[0] as? PKPass
+        self.performSegueWithIdentifier("ShowPass", sender: self)
+        
+        /*
+        override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+            if segue.identifier == "push" {
+                
+            }
+        */
+        
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -143,7 +153,42 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     return [[UICollectionReusableView alloc] init];
     }*/
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowPass" {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        var passViewController: PassViewController = segue.destinationViewController as PassViewController
+        // var cell = collectionView.cellForItemAtIndexPath(0)
+            
+            if currentPass != nil {
+                println(currentPass?.localizedName)
+                println(currentPass?.localizedDescription)
+                println(currentPass?.organizationName)
+                passViewController.localizedDescription = currentPass?.localizedDescription
+                passViewController.localizedName = currentPass?.localizedName
+                passViewController.organizationName = currentPass?.organizationName
+                passViewController.passImage = currentPass?.icon
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a" // superset of OP's format
+                let relevantDateString = dateFormatter.stringFromDate(NSDate())
+                passViewController.relevantDate = relevantDateString
+                // passViewController.userInfo = currentPass?.userInfo
+                // passViewController.balance = currentPass?.localizedValueForFieldKey("serialNumber")
+            }
+            
+
+        //passViewController.localizedDescription = currentPass?.localizedDescription
+        // passViewController.localizedDescription = currentPass?.localizedDescription
+            
+        // println("\(onePass.localizedName)")
+        //println("\(onePass.organizationName)")
+        //myImage = onePass.icon
+            
+        }
+
+    }
 
 }
 

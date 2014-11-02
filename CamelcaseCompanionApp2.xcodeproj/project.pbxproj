@@ -17,6 +17,8 @@
 		63426F5E1A04E14F00E51C5A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63426F5D1A04E14F00E51C5A /* PassKit.framework */; };
 		63426F671A050EFD00E51C5A /* PassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63426F661A050EFD00E51C5A /* PassCell.swift */; };
 		63EB388E1A0606650046748D /* 220.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63EB388D1A0606650046748D /* 220.jpg */; };
+		63EB38901A063EF90046748D /* PassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EB388F1A063EF90046748D /* PassHeader.swift */; };
+		63EB38921A06407B0046748D /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EB38911A06407B0046748D /* PassViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		63426F5F1A04E14F00E51C5A /* CamelcaseCompanionApp2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CamelcaseCompanionApp2.entitlements; sourceTree = "<group>"; };
 		63426F661A050EFD00E51C5A /* PassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCell.swift; sourceTree = "<group>"; };
 		63EB388D1A0606650046748D /* 220.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 220.jpg; sourceTree = "<group>"; };
+		63EB388F1A063EF90046748D /* PassHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassHeader.swift; sourceTree = "<group>"; };
+		63EB38911A06407B0046748D /* PassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				63426F661A050EFD00E51C5A /* PassCell.swift */,
 				63426F3F1A04E14300E51C5A /* ViewController.swift */,
 				63426F411A04E14300E51C5A /* Main.storyboard */,
+				63EB388F1A063EF90046748D /* PassHeader.swift */,
+				63EB38911A06407B0046748D /* PassViewController.swift */,
 				63426F441A04E14300E51C5A /* Images.xcassets */,
 				63426F461A04E14300E51C5A /* LaunchScreen.xib */,
 				63EB388D1A0606650046748D /* 220.jpg */,
@@ -237,7 +243,9 @@
 				63426F671A050EFD00E51C5A /* PassCell.swift in Sources */,
 				63426F401A04E14300E51C5A /* ViewController.swift in Sources */,
 				63426F3E1A04E14300E51C5A /* CamelcaseCompanionApp2.xcdatamodeld in Sources */,
+				63EB38921A06407B0046748D /* PassViewController.swift in Sources */,
 				63426F3B1A04E14300E51C5A /* AppDelegate.swift in Sources */,
+				63EB38901A063EF90046748D /* PassHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
