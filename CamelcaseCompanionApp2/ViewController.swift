@@ -30,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         var passLib = PKPassLibrary()
         self.passArray = passLib.passes()
-        println("number of passes is \(passArray.count)")
+        // println("number of passes is \(passArray.count)")
         self.collectionView.reloadData()
     }
 
@@ -45,10 +45,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         toolbar.setBackgroundImage(navBarImage, forToolbarPosition: .Any , barMetrics: .Default)
         
-        collectionView!.dataSource = self
-        collectionView!.delegate = self
+        //collectionView!.dataSource = self
+        //collectionView!.delegate = self
         //collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         self.collectionView!.registerClass(PassCell.self, forCellWithReuseIdentifier: "cell")
+        
+        /*
+        uiCollectionView.registerClass(MyFooterView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer")
+        */
         
         if PKPassLibrary.isPassLibraryAvailable() == false {
             println("passLibrary is not available on this device")
@@ -66,8 +70,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // return passArray.count
-        return myArray.count
+        return passArray.count
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -83,13 +86,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if passArray.count != 0 {
                 // var myImage = UIImage(named: myArray[indexPath.row])
                 // TODO check that icon.png exists
-                var myImage = passArray[0].icon
+                var myImage = passArray[indexPath.item].icon
                 var myFrame : CGRect
                 if myImage != nil {
                     var myImageSize = myImage!.size
                     
-                    if myImageSize.width > 120.0 || myImageSize.height > 120.0 {
-                        myFrame = CGRectMake(5,5,120,120)
+                    if myImageSize.width > 160.0 || myImageSize.height > 160.0 {
+                        myFrame = CGRectMake(5,5,150,150)
                     } else if myImageSize.width < 60.0 || myImageSize.height < 60.0 {
                         myFrame = CGRectMake(5,5, 2 * myImageSize.width, 2 * myImageSize.height)
                     } else {
@@ -108,14 +111,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // SELECT item
         
-        /*
-        NSString *searchTerm = self.searches[indexPath.section];
-        FlickrPhoto *photo = self.searchResults[searchTerm][indexPath.row];
-        self.performSegueWithIdentifier("ShowPass", sender:photo);
-        collectionView.deselectItemAtIndexPath(indexPath animated:YES)
-        */
-        
-        currentPass = passArray[0] as? PKPass
+        currentPass = passArray[indexPath.item] as? PKPass
         self.performSegueWithIdentifier("ShowPass", sender: self)
         
         /*
@@ -135,7 +131,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             
-        var retval = CGSizeMake(120,120)
+        var retval = CGSizeMake(140,140)
         retval.height += 20
         retval.width += 20
         return retval            
@@ -144,14 +140,43 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             
-         return UIEdgeInsetsMake(40, 10, 40, 0)
+         return UIEdgeInsetsMake(15, 15, 15, 15)
     }
     
-    /*- (UICollectionReusableView *)collectionView:
-    (UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-    {
-    return [[UICollectionReusableView alloc] init];
-    }*/
+   func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+        atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+            
+            // var resusableView : UICollectionReusableView
+            
+            if kind == UICollectionElementKindSectionHeader {
+            
+                let headerView : PassHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "PassHeaderView", forIndexPath: indexPath) as PassHeaderView
+            
+                //NSString *searchTerm = self.searches[indexPath.section]; [headerView setSearchText:searchTerm];
+                var headerTerm = "moje kupony"
+                headerView.headerLabel.text = headerTerm
+            
+                var myImage = UIImage(named: "header_bg.png")!
+                let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
+                myImage = myImage.resizableImageWithCapInsets(myInsets)
+                headerView.backgroundImageView.center = headerView.center;
+                headerView.backgroundImageView.image = myImage
+             
+                return headerView
+            
+            } else  {
+                
+                let footerView : PassFooterView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "PassFooterView", forIndexPath: indexPath) as PassFooterView
+                
+                    var myImage = UIImage(named: "decoration_snail.png")!
+                    // let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+                    // myImage = myImage.resizableImageWithCapInsets(myInsets)
+                    footerView.footerImageView.center = footerView.center;
+                    footerView.footerImageView.image = myImage
+
+                    return footerView
+            }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -162,9 +187,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // var cell = collectionView.cellForItemAtIndexPath(0)
             
             if currentPass != nil {
-                println(currentPass?.localizedName)
-                println(currentPass?.localizedDescription)
-                println(currentPass?.organizationName)
                 passViewController.localizedDescription = currentPass?.localizedDescription
                 passViewController.localizedName = currentPass?.localizedName
                 passViewController.organizationName = currentPass?.organizationName
@@ -174,17 +196,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a" // superset of OP's format
                 let relevantDateString = dateFormatter.stringFromDate(NSDate())
                 passViewController.relevantDate = relevantDateString
-                // passViewController.userInfo = currentPass?.userInfo
+                
+                passViewController.platnost = currentPass?.localizedValueForFieldKey("subtitle") as? String // gym pass do kdy plati
+                
+                var balanceInt = currentPass?.localizedValueForFieldKey("balance") as? Int
+                if balanceInt != nil {
+                    var balanceString = String(balanceInt!)
+                    passViewController.balance = balanceString
+                    // passViewController.balance = currentPass?.localizedValueForFieldKey("balance") as? String // loyalty pass
+                }
+                
+                // passViewController.userInfo = currentPass?.userInfo // JSON data napr. favorite drink
                 // passViewController.balance = currentPass?.localizedValueForFieldKey("serialNumber")
+                // println(currentPass?.localizedValueForFieldKey("balance")) // loyalty
+                // println(currentPass?.localizedValueForFieldKey("deal!")) // loyalty nefunguje
+                // println(currentPass?.localizedValueForFieldKey("subtitle")) // gym
+                // println(currentPass?.localizedValueForFieldKey("member")) // gym
             }
-            
-
-        //passViewController.localizedDescription = currentPass?.localizedDescription
-        // passViewController.localizedDescription = currentPass?.localizedDescription
-            
-        // println("\(onePass.localizedName)")
-        //println("\(onePass.organizationName)")
-        //myImage = onePass.icon
             
         }
 

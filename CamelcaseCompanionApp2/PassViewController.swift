@@ -21,6 +21,7 @@ class PassViewController: UIViewController {
     @IBOutlet var userInfoLabel: UILabel!
     @IBOutlet var relevantDateLabel: UILabel!
     @IBOutlet var balanceLabel: UILabel!
+    @IBOutlet var platnostLabel: UILabel!
     
     var passImage : UIImage?
     var localizedDescription : String?
@@ -29,6 +30,7 @@ class PassViewController: UIViewController {
     var relevantDate : String?
     var userInfo : String?
     var balance : String?
+    var platnost : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,11 @@ class PassViewController: UIViewController {
         if balance != nil {
             balanceLabel.text = balance
         }
+        
+        if platnost != nil {
+            platnostLabel.text = platnost
+        }
+        
         // Do any additional setup after loading the view.
     }
 

@@ -28,6 +28,11 @@
                                                     <action selector="shareButtonTapped:" destination="vXZ-lx-hvc" id="6Qx-BD-Rv8"/>
                                                 </connections>
                                             </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Wvs-t3-fbo"/>
+                                            <barButtonItem title="www.camelcase.cz" id="l1G-tl-1Oj">
+                                                <color key="tintColor" red="0.13886822090000001" green="0.13886822090000001" blue="0.13886822090000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="6RA-p9-nZe"/>
                                         </items>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
@@ -38,8 +43,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="59q-2e-eRh">
                                             <size key="itemSize" width="72" height="60"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="headerReferenceSize" width="400" height="100"/>
+                                            <size key="footerReferenceSize" width="400" height="100"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
@@ -74,9 +79,73 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PassHeaderView" id="a6a-WJ-y7J" customClass="PassHeaderView" customModule="CamelcaseCompanionApp2" customModuleProvider="target">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-Ov-PoU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-0O-mPB">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="xaH-Ov-PoU"/>
+                                                    <exclude reference="dhx-0O-mPB"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="xaH-Ov-PoU"/>
+                                                    <include reference="dhx-0O-mPB"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <outlet property="backgroundImageView" destination="xaH-Ov-PoU" id="cpe-ux-JWZ"/>
+                                                <outlet property="headerLabel" destination="dhx-0O-mPB" id="kzk-K3-oG2"/>
+                                            </connections>
+                                        </collectionReusableView>
+                                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PassFooterView" id="udg-eN-ZT0" customClass="PassFooterView" customModule="CamelcaseCompanionApp2" customModuleProvider="target">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kWR-02-7j1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="kWR-02-7j1"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="kWR-02-7j1"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <outlet property="footerImageView" destination="kWR-02-7j1" id="ZW7-KF-KQu"/>
+                                            </connections>
+                                        </collectionReusableView>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="44" width="385" height="736"/>
+                                            <rect key="frame" x="0.0" y="44" width="400" height="736"/>
                                         </variation>
+                                        <connections>
+                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="igr-xT-k8X"/>
+                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="PRH-BH-yaf"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <variation key="default">
@@ -185,7 +254,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="273" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="273" width="186" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb5-Xp-Mj7">
@@ -194,7 +263,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="302" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="302" width="186" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnI-Km-d5o">
@@ -203,7 +272,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="331" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="331" width="186" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-m0-TIK">
@@ -212,16 +281,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="360" width="141" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOr-Y3-OaR">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="389" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="360" width="186" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RelevantDate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk1-EN-Sqm">
@@ -239,7 +299,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="418" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="418" width="186" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userInfo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1h-f7-Mcy">
@@ -257,22 +317,31 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="447" width="141" height="21"/>
+                                    <rect key="frame" x="160" y="447" width="186" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organization" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BB-ca-F2K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platnost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shE-Hp-ovJ">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="389" width="97" height="21"/>
+                                    <rect key="frame" x="26" y="476" width="97" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yX-Rr-FF3">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="160" y="476" width="186" height="21"/>
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-zu-q2p">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="34" y="131" width="243" height="110"/>
+                                    <rect key="frame" x="83" y="100" width="201" height="165"/>
                                 </variation>
                             </imageView>
                         </subviews>
@@ -288,12 +357,12 @@
                                 <exclude reference="Vb5-Xp-Mj7"/>
                                 <exclude reference="CnI-Km-d5o"/>
                                 <exclude reference="ACe-m0-TIK"/>
-                                <exclude reference="dOr-Y3-OaR"/>
                                 <exclude reference="mk1-EN-Sqm"/>
                                 <exclude reference="XKA-nj-ONz"/>
                                 <exclude reference="r1h-f7-Mcy"/>
                                 <exclude reference="nWP-pt-jK4"/>
-                                <exclude reference="5BB-ca-F2K"/>
+                                <exclude reference="shE-Hp-ovJ"/>
+                                <exclude reference="8yX-Rr-FF3"/>
                                 <exclude reference="qAI-zu-q2p"/>
                             </mask>
                         </variation>
@@ -308,12 +377,12 @@
                                 <include reference="Vb5-Xp-Mj7"/>
                                 <include reference="CnI-Km-d5o"/>
                                 <include reference="ACe-m0-TIK"/>
-                                <include reference="dOr-Y3-OaR"/>
                                 <include reference="mk1-EN-Sqm"/>
                                 <include reference="XKA-nj-ONz"/>
                                 <include reference="r1h-f7-Mcy"/>
                                 <include reference="nWP-pt-jK4"/>
-                                <include reference="5BB-ca-F2K"/>
+                                <include reference="shE-Hp-ovJ"/>
+                                <include reference="8yX-Rr-FF3"/>
                                 <include reference="qAI-zu-q2p"/>
                             </mask>
                         </variation>
@@ -324,13 +393,14 @@
                         <outlet property="localizedNameLabel" destination="Vb5-Xp-Mj7" id="8Tu-HY-PNQ"/>
                         <outlet property="organizationNameLabel" destination="KLO-0C-WNl" id="Aeq-YE-udG"/>
                         <outlet property="passImageView" destination="qAI-zu-q2p" id="xPr-8f-Jxl"/>
+                        <outlet property="platnostLabel" destination="8yX-Rr-FF3" id="BMi-iz-wtp"/>
                         <outlet property="relevantDateLabel" destination="XKA-nj-ONz" id="kXZ-BF-f0D"/>
                         <outlet property="userInfoLabel" destination="nWP-pt-jK4" id="Fqm-hC-bRe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ge6-tM-Wu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132.5" y="567.75"/>
+            <point key="canvasLocation" x="1054.5" y="548.25"/>
         </scene>
     </scenes>
 </document>
