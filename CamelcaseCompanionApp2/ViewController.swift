@@ -19,7 +19,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var passArray = []
     var currentPass : PKPass?
     var myImageView : UIImageView!
-    var myArray = ["220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg","220.jpg", ]
     
     @IBAction func shareButtonTapped(sender: AnyObject) {
         
@@ -39,11 +38,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view, typically from a nib.
         
         myView.backgroundColor = UIColor(patternImage: UIImage(named: "bg_cork.png")!)
-        var navBarImage = UIImage(named: "navbar.png")!
-        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(27, 27, 27, 27)
-        navBarImage = navBarImage.resizableImageWithCapInsets(myInsets)
-        
-        toolbar.setBackgroundImage(navBarImage, forToolbarPosition: .Any , barMetrics: .Default)
+        // THIS sets the toolbar background image in the main ViewController
+        // var navBarImage = UIImage(named: "navbar.png")!
+        // let myInsets : UIEdgeInsets = UIEdgeInsetsMake(27, 27, 27, 27)
+        // navBarImage = navBarImage.resizableImageWithCapInsets(myInsets)
+        // toolbar.setBackgroundImage(navBarImage, forToolbarPosition: .Any , barMetrics: .Default)
         
         //collectionView!.dataSource = self
         //collectionView!.delegate = self
@@ -56,6 +55,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if PKPassLibrary.isPassLibraryAvailable() == false {
             println("passLibrary is not available on this device")
+            //TODO inform user that his device do not support passes
             return
         }
         
@@ -81,7 +81,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
 //        var cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         var cell: PassCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PassCell
-        cell.backgroundColor = UIColor.whiteColor()
+        // cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clearColor()
+
         
         if passArray.count != 0 {
                 // var myImage = UIImage(named: myArray[indexPath.row])
@@ -91,12 +93,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 if myImage != nil {
                     var myImageSize = myImage!.size
                     
-                    if myImageSize.width > 160.0 || myImageSize.height > 160.0 {
-                        myFrame = CGRectMake(5,5,150,150)
-                    } else if myImageSize.width < 60.0 || myImageSize.height < 60.0 {
-                        myFrame = CGRectMake(5,5, 2 * myImageSize.width, 2 * myImageSize.height)
+                    if myImageSize.width > 58 || myImageSize.height > 58 {
+                        // myFrame = CGRectMake(5,5,130,130)
+                        myFrame = CGRectMake(15,15,58,58)
                     } else {
-                        myFrame = CGRectMake(5,5, myImageSize.width, myImageSize.height)
+                       // myFrame = CGRectMake(5,5, myImageSize.width, myImageSize.height)
+                        myFrame = CGRectMake(15,15, myImageSize.width, myImageSize.height)
                     }
                 
                 myImageView = UIImageView(frame: myFrame)
@@ -113,14 +115,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         currentPass = passArray[indexPath.item] as? PKPass
         self.performSegueWithIdentifier("ShowPass", sender: self)
-        
-        /*
-        override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-            if segue.identifier == "push" {
-                
-            }
-        */
-        
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -130,17 +124,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // ViewFlowLayout delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            
-        var retval = CGSizeMake(140,140)
-        retval.height += 20
-        retval.width += 20
+        
+        var retval : CGSize = passArray[indexPath.item].icon!.size.width > 0 ? passArray[indexPath.item].icon!.size : CGSizeMake(58,58)
+        retval.height += 15
+        retval.width += 15
         return retval            
     }
     
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             
-         return UIEdgeInsetsMake(15, 15, 15, 15)
+         return UIEdgeInsetsMake(40, 20, 40, 20)
     }
     
    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
@@ -153,8 +147,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 let headerView : PassHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "PassHeaderView", forIndexPath: indexPath) as PassHeaderView
             
                 //NSString *searchTerm = self.searches[indexPath.section]; [headerView setSearchText:searchTerm];
-                var headerTerm = "moje kupony"
-                headerView.headerLabel.text = headerTerm
+                var headerString = "moje kupony"
+                headerView.headerLabel.text = headerString
             
                 var myImage = UIImage(named: "header_bg.png")!
                 let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
