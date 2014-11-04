@@ -61,6 +61,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         var passLib = PKPassLibrary()
         self.passArray = passLib.passes()
+        
     }
     
     // Data source methods
@@ -82,7 +83,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        var cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         var cell: PassCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PassCell
         // cell.backgroundColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.whiteColor()
 
         
         if passArray.count != 0 {
@@ -95,15 +96,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                     
                     if myImageSize.width > 58 || myImageSize.height > 58 {
                         // myFrame = CGRectMake(5,5,130,130)
-                        myFrame = CGRectMake(15,15,58,58)
+                        myFrame = CGRectMake(10,10,58,58)
                     } else {
                        // myFrame = CGRectMake(5,5, myImageSize.width, myImageSize.height)
-                        myFrame = CGRectMake(15,15, myImageSize.width, myImageSize.height)
+                        myFrame = CGRectMake(10,10, myImageSize.width, myImageSize.height)
                     }
                 
                 myImageView = UIImageView(frame: myFrame)
                 myImageView.image = myImage
                 cell.contentView.addSubview(myImageView)
+                    
             }
         }
         return cell
@@ -126,15 +128,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         var retval : CGSize = passArray[indexPath.item].icon!.size.width > 0 ? passArray[indexPath.item].icon!.size : CGSizeMake(58,58)
-        retval.height += 15
-        retval.width += 15
+        retval.height += 20
+        retval.width += 20
         return retval            
     }
     
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             
-         return UIEdgeInsetsMake(40, 20, 40, 20)
+         return UIEdgeInsetsMake(50, 10, 50, 10) // (header to first row margin, left side margin, last row to footer margin, right side margin)
     }
     
    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
@@ -151,9 +153,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 headerView.headerLabel.text = headerString
             
                 var myImage = UIImage(named: "header_bg.png")!
-                let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
-                myImage = myImage.resizableImageWithCapInsets(myInsets)
-                headerView.backgroundImageView.center = headerView.center;
+                //let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
+                //myImage = myImage.resizableImageWithCapInsets(myInsets)
+                // println("headerbackgroundimageview.center \(headerView.backgroundImageView.center)")
+                // println("headerview.center \(headerView.center)")
+                // headerView.backgroundImageView.center = headerView.center;
                 headerView.backgroundImageView.image = myImage
              
                 return headerView
@@ -163,9 +167,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 let footerView : PassFooterView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "PassFooterView", forIndexPath: indexPath) as PassFooterView
                 
                     var myImage = UIImage(named: "decoration_snail.png")!
-                    // let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+                    // let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
                     // myImage = myImage.resizableImageWithCapInsets(myInsets)
-                    footerView.footerImageView.center = footerView.center;
+                    // println("footerimageview.center \(footerView.footerImageView.center)")
+                    // println("footerView.center \(footerView.center)")
+                    // footerView.footerImageView.center = footerView.center;
                     footerView.footerImageView.image = myImage
 
                     return footerView
