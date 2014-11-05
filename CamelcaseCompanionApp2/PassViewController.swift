@@ -136,7 +136,6 @@ class PassViewController: UIViewController {
             self.presentViewController(actionSheetController, animated: true, completion: nil)
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

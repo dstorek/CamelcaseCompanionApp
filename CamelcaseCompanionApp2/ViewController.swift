@@ -222,6 +222,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 passViewController.localizedDescription = currentPass?.localizedDescription
                 passViewController.localizedName = currentPass?.localizedName
                 passViewController.organizationName = currentPass?.organizationName
+                
+                // passViewController.userInfo = currentPass?.userInfo
+                if currentPass!.userInfo != nil {
+                    
+                  let userInfo : [NSObject : AnyObject]! = currentPass?.userInfo
+                  let active : String? = userInfo["offer"] as String?
+                    
+                    if active != nil && active == "0" { //TODO this needs to be changed to other value as 0 means that a special offer is not available
+                        
+                        } else {
+                            let detail: String? = userInfo["detail"] as String?
+                            let token : String? = userInfo["token"] as String?
+                            let offer : String? = userInfo["offer"] as String?
+                            //  TODO implement some business purpose functionality
+                        
+                            if offer != nil {
+                                passViewController.userInfo = offer
+                            }
+                        }
+                    }
+                }
+            
                 passViewController.passImage = currentPass?.icon
                 
                 let dateFormatter = NSDateFormatter()
@@ -250,7 +272,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 // println(currentPass?.localizedValueForFieldKey("deal!")) // loyalty nefunguje
                 // println(currentPass?.localizedValueForFieldKey("subtitle")) // gym
                 // println(currentPass?.localizedValueForFieldKey("member")) // gym
-            }
+            
             
         }
 
