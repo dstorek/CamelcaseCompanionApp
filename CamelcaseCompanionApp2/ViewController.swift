@@ -179,17 +179,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 headerView.headerLabel.text = headerString
             
                 var myImage = UIImage(named: "header_bg.png")!
-                println(myImage.size)
+                // println(myImage.size)
                 let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
                 myImage = myImage.resizableImageWithCapInsets(myInsets)
-                println(myImage.size)
+                // println(myImage.size)
                 // println("headerbackgroundimageview.center \(headerView.backgroundImageView.center)")
                 // println("headerview.center \(headerView.center)")
                 // headerView.backgroundImageView.center = headerView.center;
-                println(headerView.backgroundImageView.frame)
+                // println(headerView.backgroundImageView.frame)
                 headerView.backgroundImageView.image = myImage
-                println(headerView.backgroundImageView.frame)
-                println(headerView.backgroundImageView.image!.size)
+                // println(headerView.backgroundImageView.frame)
+                // println(headerView.backgroundImageView.image!.size)
                 headerView.backgroundImageView.center = headerView.center
              
                 return headerView
@@ -230,7 +230,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 passViewController.relevantDate = relevantDateString
                 
                 passViewController.platnost = currentPass?.localizedValueForFieldKey("subtitle") as? String // gym pass do kdy plati
+                passViewController.name = currentPass?.localizedValueForFieldKey("name") as? String
+                passViewController.phone = currentPass?.localizedValueForFieldKey("phone") as? String
+                passViewController.website = currentPass?.localizedValueForFieldKey("website") as? String
+                passViewController.gps = currentPass?.localizedValueForFieldKey("gps") as? String
                 
+                
+      
                 var balanceInt = currentPass?.localizedValueForFieldKey("balance") as? Int
                 if balanceInt != nil {
                     var balanceString = String(balanceInt!)
