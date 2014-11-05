@@ -23,7 +23,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func shareButtonTapped(sender: AnyObject) {
         
         if PKPassLibrary.isPassLibraryAvailable() == false {
-            println("passLibrary is not available on this device")
+            // println("passLibrary is not available on this device")
+            // Create actionSheet
+            let actionSheetController : UIAlertController =  UIAlertController(title:"Alert", message: "PassLibrary is not available on this device", preferredStyle: .Alert);
+            
+            // Create and add the OK Action
+            let okAction : UIAlertAction = UIAlertAction(title: "OK", style: .Default ) { action -> Void in
+                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            actionSheetController.addAction(okAction)
+            
+            // Present the Alert Controller
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            
+            // Return
             return
         }
         
@@ -54,8 +67,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         */
         
         if PKPassLibrary.isPassLibraryAvailable() == false {
-            println("passLibrary is not available on this device")
-            //TODO inform user that his device do not support passes
+            // println("passLibrary is not available on this device")
+            // inform user that his device do not support passes
+            // Create an Alert Controller
+            let actionSheetController : UIAlertController =  UIAlertController(title:"Alert", message: "PassLibrary is not available on this device", preferredStyle: .Alert);
+            
+            // Create and add the OK Action
+            let okAction : UIAlertAction = UIAlertAction(title: "OK", style: .Default ) { action -> Void in
+                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            actionSheetController.addAction(okAction)
+           
+            // Present the Alert Controller
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            
+            // Return
             return
         }
         
@@ -153,12 +179,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 headerView.headerLabel.text = headerString
             
                 var myImage = UIImage(named: "header_bg.png")!
-                //let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
-                //myImage = myImage.resizableImageWithCapInsets(myInsets)
+                println(myImage.size)
+                let myInsets : UIEdgeInsets = UIEdgeInsetsMake(68, 68, 68, 68)
+                myImage = myImage.resizableImageWithCapInsets(myInsets)
+                println(myImage.size)
                 // println("headerbackgroundimageview.center \(headerView.backgroundImageView.center)")
                 // println("headerview.center \(headerView.center)")
                 // headerView.backgroundImageView.center = headerView.center;
+                println(headerView.backgroundImageView.frame)
                 headerView.backgroundImageView.image = myImage
+                println(headerView.backgroundImageView.frame)
+                println(headerView.backgroundImageView.image!.size)
+                headerView.backgroundImageView.center = headerView.center
              
                 return headerView
             

@@ -148,7 +148,8 @@
                                                             <exclude reference="Sht-gF-4gW"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="-40" y="0.0" width="400" height="100"/>
                                                         <mask key="constraints">
                                                             <include reference="4WQ-hc-3H1"/>
                                                             <include reference="HsR-SU-ePq"/>
@@ -161,6 +162,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="160" y="50" width="0.0" height="0.0"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -214,7 +218,8 @@
                                                             <exclude reference="cy5-RY-zEp"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="-40" y="0.0" width="400" height="100"/>
                                                         <mask key="constraints">
                                                             <include reference="3Uy-pV-muI"/>
                                                             <include reference="cy5-RY-zEp"/>
@@ -393,6 +398,12 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="doneButtonPresed:" destination="5Xb-9y-YOJ" id="MKt-YF-7pv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ZDG-i6-r4p"/>
+                                    <barButtonItem title="Check location" id="Fra-3s-YGG">
+                                        <connections>
+                                            <action selector="showMap:" destination="5Xb-9y-YOJ" id="yzx-C6-1VV"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

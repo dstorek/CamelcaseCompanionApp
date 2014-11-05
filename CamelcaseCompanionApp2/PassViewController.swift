@@ -10,8 +10,36 @@ import UIKit
 
 class PassViewController: UIViewController {
     
+    
     @IBAction func doneButtonPresed(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    @IBAction func showMap(sender: AnyObject) {
+        // Create an Alert Controller
+        let actionSheetController : UIAlertController =  UIAlertController(title:"My Title", message: "Select your Choice", preferredStyle: .ActionSheet);
+        
+        // Create and add the Cancel Action
+        let cancelAction : UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel ) { action -> Void in
+            actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        // Create and add the showDirectedMap Action
+        let showDirectedMapAction : UIAlertAction = UIAlertAction(title: "Show directed map", style: .Default ) { action -> Void in
+            actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        actionSheetController.addAction(showDirectedMapAction)
+        
+        // Create and add the showMap Action
+        let showMapAction : UIAlertAction = UIAlertAction(title: "Show map", style: .Default ) { action -> Void in
+            actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        actionSheetController.addAction(showMapAction)
+        
+        // Present the Alert Controller
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
     }
     
     @IBOutlet var organizationNameLabel: UILabel!
@@ -31,7 +59,7 @@ class PassViewController: UIViewController {
     var userInfo : String?
     var balance : String?
     var platnost : String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
