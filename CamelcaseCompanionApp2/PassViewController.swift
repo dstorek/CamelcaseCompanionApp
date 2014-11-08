@@ -33,7 +33,9 @@ class PassViewController: UIViewController {
     var name : String?
     var phone : String?
     var website : String?
-    var gps : String?
+    // var gps : String?
+    var gpsLatitude : String?
+    var gpsLongitude : String?
     var gpsCoordinates : CLLocationCoordinate2D?
     
     @IBAction func doneButtonPresed(sender: AnyObject) {
@@ -42,11 +44,11 @@ class PassViewController: UIViewController {
     
     @IBAction func showMap(sender: AnyObject) {
         //TODO check that the pass contains valid GPS coordinates (latitude, longitude) and these coordinates are valid
-        if gps != nil {
+        if gpsLatitude != nil && gpsLongitude != nil {
             gpsCoordinates = nil
-            let gpsArray = gps!.componentsSeparatedByString(", ")
-            let latitudeString: NSString = gpsArray[0]
-            let longitudeString: NSString = gpsArray[1]
+            // let gpsArray = gps!.componentsSeparatedByString(", ")
+            let latitudeString: NSString = NSString(string: gpsLatitude!)
+            let longitudeString: NSString = NSString(string: gpsLongitude!)
             gpsCoordinates = CLLocationCoordinate2DMake(latitudeString.doubleValue, longitudeString.doubleValue)
         }
         

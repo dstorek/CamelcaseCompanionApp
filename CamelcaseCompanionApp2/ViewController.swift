@@ -235,10 +235,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                             let detail: String? = userInfo["detail"] as String?
                             let token : String? = userInfo["token"] as String?
                             let offer : String? = userInfo["offer"] as String?
-                            //  TODO implement some business purpose functionality
+                            let gpsLatitude : String? = userInfo["gpsLatitude"] as String?
+                            let gpsLongitude : String? = userInfo["gpsLongitude"] as String?
                         
+                            //  TODO implement some business purpose functionality
                             if offer != nil {
                                 passViewController.userInfo = offer
+                            }
+                            if gpsLatitude != nil && gpsLongitude != nil {
+                                passViewController.gpsLatitude = gpsLatitude
+                                passViewController.gpsLongitude = gpsLongitude
                             }
                         }
                     }
@@ -252,11 +258,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 passViewController.relevantDate = relevantDateString
                 
                 passViewController.platnost = currentPass?.localizedValueForFieldKey("subtitle") as? String // gym pass do kdy plati
-                passViewController.name = currentPass?.localizedValueForFieldKey("name") as? String
-                passViewController.phone = currentPass?.localizedValueForFieldKey("phone") as? String
-                passViewController.website = currentPass?.localizedValueForFieldKey("website") as? String
-                passViewController.gps = currentPass?.localizedValueForFieldKey("gps") as? String
-                
+                passViewController.name = currentPass?.localizedValueForFieldKey("organization-info") as? String
+                passViewController.phone = currentPass?.localizedValueForFieldKey("phone-info") as? String
+                passViewController.website = currentPass?.localizedValueForFieldKey("website-info") as? String
+                // passViewController.gps = currentPass?.localizedValueForFieldKey("gps-info") as? String
                 
       
                 var balanceInt = currentPass?.localizedValueForFieldKey("balance") as? Int
